@@ -1,0 +1,1 @@
+"""Message adapters for different platforms"""

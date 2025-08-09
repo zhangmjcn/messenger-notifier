@@ -1,0 +1,66 @@
+# 环境文件 - 包含敏感的API tokens
+.env
+
+# Python相关
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.py[cod]
+*$py.class
+
+# 虚拟环境
+.venv/
+venv/
+env/
+ENV/
+
+# IDE和编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 日志文件
+*.log
+logs/
+data/
+startup.log
+service*.log
+docker-build.log
+
+# 临时文件
+*.tmp
+*.temp
+.cache/
+.pytest_cache/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# Docker相关
+.dockerignore
+
+# 测试覆盖率报告
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+
+# 发布相关
+build/
+dist/
+*.egg-info/
+
+# uv lock files (保留uv.lock用于依赖管理)
+# uv.lock 应该提交到版本控制中，所以这里不忽略
+
+# 本地测试文件
+test_config.py
+simple_test_server.py
+get_feishu_user_id.py

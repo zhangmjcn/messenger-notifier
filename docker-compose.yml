@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  notify-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: notify-service
+    ports:
+      - "18888:18888"
+    volumes:
+      - ./data:/data:rw
+      - ./logs:/app/logs:rw
+    environment:
+      # Medium priority configuration (overridden by .env if present)
+      API_PORT: 18888
+      LOG_LEVEL: INFO
+      TELEGRAM_DEFAULT_GROUP_ID: -868155406
+      # Add other default environment variables here
+      # TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}  # Can be set via .env
+      # FEISHU_APP_ID: ${FEISHU_APP_ID:-}
+      # FEISHU_APP_SECRET: ${FEISHU_APP_SECRET:-}
+    env_file:
+      - .env  # Highest priority - overrides environment section
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:18888/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - notify-network
+
+networks:
+  notify-network:
+    driver: bridge
+
+volumes:
+  notify-data:
+    driver: local

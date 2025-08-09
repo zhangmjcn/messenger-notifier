@@ -1,0 +1,1 @@
+"""FastAPI Notification Service Package"""
