@@ -64,3 +64,6 @@ dist/
 test_config.py
 simple_test_server.py
 get_feishu_user_id.py
+
+# Claude Code 项目配置文件 (保留本地，不纳入版本控制)
+CLAUDE.md
